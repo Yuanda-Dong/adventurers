@@ -1,0 +1,87 @@
+# Explorer Mark Request
+
+(You should put an [X] in boxes with completed features.
+Lines starting with ">" are additional comments.)
+
+[X] There is a player is displayed on the screen.
+
+[X] The player can be moved by pressing keys
+> You can use the Up/Down/Left/Right keys to move around. (CHANGE THIS LINE IF IT IS NOT CORRECT)
+
+[X] When the player tries to move off the screen, the screen follows them.
+
+[X] The viewport does not necessarily always move when the player does.
+
+[X] There are at least 5 block types (i.e different coloured blocks).
+
+[X] The layout of the map is specified by a file on the filesystem.
+
+[X] There is a 'barrier' block. When the player attempts to pass through it, they cannot.
+
+[X] There is a 'water' block. When the player walks through the 10th block in a row, they die and the game ends.
+
+[X] There is a 'sign' block. When the player walks over the sign block, a specified message is shown.
+
+[X] There are 'objects' in my game -- when a player walks over the object, it disappears.
+
+[X] There is a quests system in my game.
+[X] The quests system is in a seperate module or crate to the game.
+
+[X] The first quest (walking over sand blocks) is implemented.
+[X] The 'q' key shows the progress of my user in this quest.
+
+[X] The second quest (collecting five objects of one type, then three of another)
+[X] The 'q' key shows the progress of my user in this quest.
+
+[X] The third quest (at least two of the three subquests) is implemented.
+[X] The 'q' key shows the progress of my user in this quest.
+
+[X] My quests system is designed to make it easy for a developer to add more quests.
+
+## How to Run My Program
+
+Assuming we have taken your crate, without any compilation; what commands will start the game?
+
+> $ cargo run path/to/map.ron q1
+
+## Design Excellence
+
+During the assignment we make suggestions for "design excellence". Please list all those
+things you did, and where we can find them in your program.
+
+- Represent movement and coordinates via structs, using appropriate traits to implement movement. 
+- Movement trait, Player Struct in player.rs, Direction enum direction.rs 
+
+- Represent block types using enums, and use appropriate traits to convert the enum into a character that can be shown on screen. 
+- block.rs 
+
+- Use a library like serde to implement parsing. 
+- get_map function in main.rs, and Block enum in block.rs 
+
+- When the player dies, use termgame to display a message; and then exit the game when the player next moves. 
+- display message in player.rs, exit the game in main.rs 
+
+- The other would be to write a state machine of some sort. 
+- State machine is used for the implementation of Quests, lib.rs 
+
+- Explicitly making types for all your errors
+- enum My_Result in main.rs 
+
+If you made any other design choices you think demonstrate an equivalent level
+of design excellence, please list them below (including where to find them).
+Note, we suggest you check with a tutor that your design is in fact excellent
+before adding something below:
+
+> - TODO
+
+## Design Limitations
+
+If you made any design decisions which you now regret making; but don't to go back and change them,
+let us know here. You can make up your design marks by acknowledging up to 5 things you would do
+differently now.
+
+* OrderedQuest, as of current implementation, doesn't contain SubMemQuest, so can't have ordered SubMemQuest
+* Player struct is too loaded, perhaps can abstract some parts out, such as quests, map, and game status 
+* The quest system cannot handle tree-like subquests, maybe a quest system should be implemented as a tree  
+* The Display trait of the quest system was a pain to implement (due to the number of new line characters), perhaps a tree-like data structure can help, since printing is just a bfs
+* Maybe require event (generic in lib.rs) to implement Display, so that quest prompt can be constructed directly from the event itself, instead of asking for custom prompt in the constructor

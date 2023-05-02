@@ -1,0 +1,18 @@
+{
+    (0, 0): Barrier, 
+    (0, 1): Barrier, 
+    (0, 2): Barrier, 
+    (0, 3): Barrier,
+    (1, 0): Barrier, 
+    (1, 1): Cinderblock, 
+    (1, 2): Flowerbush, 
+    (1, 3): Barrier,
+    (2, 0): Barrier, 
+    (2, 1): Object('x'), 
+    (2, 2): Grass, 
+    (2, 3): Sign("Hello, wanderer!"),
+    (3, 0): Water, 
+    (3, 1): Water, 
+    (3, 2): Water, 
+    (3, 3): Water,
+}
